@@ -14,7 +14,7 @@ binary_tree_t **createQueue(int *front, int *rear)
 	return (queue);
 }
 /**
- * enQueueu - a function that add to queue
+ * enQueue - a function that add to queue
  * @queue: represent the queue
  * @rear: represent the rear
  * @new_node: represent the new node to be added
@@ -26,7 +26,7 @@ void enQueue(binary_tree_t **queue, int *rear, binary_tree_t *new_node)
 	(*rear)++;
 }
 /**
- * deQueueue - a function that remove from a queue
+ * deQueue - a function that remove from a queue
  * @queue: represent the queue
  * @front: represent the rear
  */
@@ -36,7 +36,6 @@ binary_tree_t *deQueue(binary_tree_t **queue, int *front)
 	(*front)++;
 	return (queue[*front - 1]);
 }
-
 
 /**
  * isQueueEmpty - a function that checks for an empty queue
@@ -53,13 +52,12 @@ int isQueueEmpty(int *front, int *rear)
 		return (0);
 }
 
-
 /**
- * binary_tree_is_complete - a function that checks if a binary tree is complete
+ * binary_tree_is_complete - a function that checks
+ *                           if a binary tree is complete
  * @tree: represents a pointer to the root
  * Return: 1 if complete, otherwise 0
  */
-
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	 int rear, front;
@@ -67,7 +65,9 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	 int flag = 0;
 
 	 if (tree == NULL)
+
 		 return (0);
+
 	 enQueue(queue, &rear, (binary_tree_t *)tree);
 	 while (!isQueueEmpty(&front, &rear))
 	 {
@@ -77,7 +77,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		 {
 			 if (flag == 1)
 				 return (0);
-			 enQueue (queue, &rear, temp_node->left);
+			 enQueue(queue, &rear, temp_node->left);
 		 }
 		 else
 			 flag = 1;
@@ -85,10 +85,11 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		 {
 			 if (flag == 1)
 				 return (0);
-			 enQueue (queue, &rear, temp_node->right);
+			 enQueue(queue, &rear, temp_node->right);
 		 }
 		 else
 			 flag = 1;
 	 }
+
 	 return (1);
 }
